@@ -101,9 +101,25 @@ function Maintenance() {
       }
       loadRecords();
       handleCloseDialog();
+      alert('Maintenance record saved successfully!');
     } catch (error) {
       console.error('Error saving maintenance record:', error);
       alert(error.response?.data?.message || 'Error saving maintenance record');
+    }
+  };
+
+  const handleDelete = async (recordId) => {
+    if (!window.confirm('Are you sure you want to delete this maintenance record? This action cannot be undone.')) {
+      return;
+    }
+
+    try {
+      await api.delete(`/maintenance/${recordId}`);
+      alert('Maintenance record deleted successfully!');
+      loadRecords();
+    } catch (error) {
+      console.error('Error deleting maintenance record:', error);
+      alert(error.response?.data?.message || 'Error deleting record');
     }
   };
 
@@ -133,20 +149,6 @@ function Maintenance() {
       month: 'long',
       day: 'numeric'
     });
-  };
-  const handleDelete = async (recordId) => {
-    if (!window.confirm('Are you sure you want to delete this maintenance record? This action cannot be undone.')) {
-      return;
-    }
-
-    try {
-      await api.delete(`/maintenance/${recordId}`);
-      alert('Maintenance record deleted successfully!');
-      loadRecords();
-    } catch (error) {
-      console.error('Error deleting maintenance record:', error);
-      alert(error.response?.data?.message || 'Error deleting record');
-    }
   };
 
   return (
@@ -217,13 +219,23 @@ function Maintenance() {
               )}
 
               {(user?.role === 'admin' || user?.role === 'dispatcher') && (
-                <Box sx={{ mt: 2 }}>
+                <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
                   <IconButton
                     size="small"
                     color="primary"
                     onClick={() => handleOpenDialog(record)}
+                    title="Edit Maintenance"
                   >
                     <Edit />
+                  </IconButton>
+                  
+                  <IconButton
+                    size="small"
+                    color="error"
+                    onClick={() => handleDelete(record._id)}
+                    title="Delete Maintenance"
+                  >
+                    <Delete />
                   </IconButton>
                 </Box>
               )}
@@ -365,27 +377,6 @@ function Maintenance() {
           </DialogActions>
         </form>
       </Dialog>
-      {(user?.role === 'admin' || user?.role === 'dispatcher') && (
-        <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
-          <IconButton
-            size="small"
-            color="primary"
-            onClick={() => handleOpenDialog(record)}
-            title="Edit"
-          >
-            <Edit />
-          </IconButton>
-
-          <IconButton
-            size="small"
-            color="error"
-            onClick={() => handleDelete(record._id)}
-            title="Delete"
-          >
-            <Delete />
-          </IconButton>
-        </Box>
-      )}
     </Container>
   );
 }
