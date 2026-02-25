@@ -1,0 +1,59 @@
+
+Vehicle Number: GP-005-NS
+Make: Nissan
+Model: NP300 Hardbody 2.5 TDi
+Year: 2022
+Type: Truck
+Capacity: 900
+Capacity Unit: kg
+Fuel Type: Diesel
+Fuel Consumption: 8.0
+Current Mileage: 32100
+Status: Available
+Notes: Compact pickup, excellent for urban deliveries
+
+Vehicle Number: GP-002-IS
+Make: Isuzu
+Model: NPR 400
+Year: 2022
+Type: Truck
+Capacity: 3500
+Capacity Unit: kg
+Fuel Type: Diesel
+Fuel Consumption: 12.5
+Current Mileage: 45680
+Status: Available
+Notes: Medium commercial truck, ideal for deliveries
+
+**Customer Information:**
+- Customer Name: Sarah Mthembu
+- Customer Phone: +27 82 456 7890
+- Customer Email: sarah.m@techcorp.co.za
+- Customer Address: 78 Business Park Drive, Midrand
+
+**Pickup & Delivery:**
+- Pickup Address: 56 Factory Street, Germiston, Johannesburg
+- Delivery Address: 78 Business Park Drive, Midrand
+
+**Cargo Details:**
+- Cargo Description: Office furniture - desks, chairs, filing cabinets
+- Weight (kg): 350
+- Quantity: 12
+
+**Order Details:**
+- Priority: Medium
+- Distance (km): 25
+- Estimated Delivery: 2024-02-15T10:00
+- Cost (R): 2000
+- Notes: Third floor delivery, building has elevator
+
+
+
+Driver 1: Thabo Mthembu
+
+
+Name: Thabo Mthembu
+
+Email: thabo.mthembu@fleetdriver.co.za
+
+Phone: +27 82 345 6789
