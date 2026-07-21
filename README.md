@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Fleet Management System — Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A role-based fleet management web application built with React and Material UI. It lets a transport/logistics team track vehicles, drivers, delivery orders, maintenance schedules, and operating costs, and includes a real-time messaging module for dispatchers, admins, and drivers to communicate.
 
-## Available Scripts
+**Live app:** https://fleetfrontend-9fus.onrender.com/login
+**Backend repo:** https://github.com/James1oliveira/fleetbackend
+**Frontend repo:** https://github.com/James1oliveira/fleetfrontend
 
-In the project directory, you can run:
+> This README documents the frontend only. It requires the companion Node/Express backend (linked above) to function, since all pages fetch data from a REST API and one module (Communication) uses a WebSocket connection.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Authentication** — Login and Registration screens backed by a shared `AuthContext`, with role selection (Admin / Dispatcher / Driver) at sign-up.
+- **Dashboard** — At-a-glance stats: total and active vehicles, total and active drivers, pending and in-progress orders, and total operating costs, pulled from the vehicles, drivers, orders, and costs endpoints in parallel.
+- **Vehicles** — Fleet inventory management.
+- **Drivers** — Driver directory with license details, experience, rating, trip count, distance driven, and current vehicle assignment. Admins/dispatchers can edit driver records or remove a driver.
+- **Orders** — Delivery/job order tracking.
+- **Maintenance** — Schedule and track preventive, corrective, inspection, and repair work per vehicle, with status (scheduled / in-progress / completed / cancelled) and priority (low → urgent) tracking, plus cost logging.
+- **Costs** — Log fuel, maintenance, insurance, tax, toll, and parking expenses per vehicle, with automatic amount calculation from quantity × unit price, a running total, and a breakdown by cost type.
+- **Communication** — Real-time direct messaging between users via Socket.IO, with a contact list, conversation history, and message deletion.
+- **Role-based UI** — Admin/dispatcher-only actions (create, edit, delete) are hidden from other roles at the component level.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+| Layer | Technology |
+|---|---|
+| Framework | React 18 |
+| UI Components | Material UI (`@mui/material`, `@mui/icons-material`), Emotion |
+| Routing | React Router v6 |
+| HTTP Client | Axios |
+| Real-time | Socket.IO Client |
+| Maps | Leaflet / React-Leaflet |
+| Charts | Recharts |
+| Build Tooling | Create React App (`react-scripts` 5) |
+| Testing (scaffolded) | React Testing Library / Jest |
+| Deployment | Render (static hosting) |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/
+├── components/
+│   ├── Login.js
+│   ├── Register.js
+│   ├── Dashboard.js
+│   ├── Vehicles.js
+│   ├── Drivers.js
+│   ├── Orders.js
+│   ├── Maintenance.js
+│   ├── Costs.js
+│   └── Communication.js
+├── context/
+│   └── AuthContext.js       # login/register/session state, current user + role
+├── services/
+│   ├── api.js                # Axios instance (REST calls to the backend)
+│   └── socket.js              # Socket.IO client connection
+└── App.js                     # Route definitions
+```
 
-### `npm run eject`
+## Deployment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The production build is deployed as a static site on [Render](https://render.com), live at:
+https://fleetfrontend-9fus.onrender.com/login
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+No license specified yet — add one (e.g. MIT) if this project will be shared or open-sourced.
