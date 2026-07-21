@@ -69,9 +69,3 @@ src/
 
 The production build is deployed as a static site on [Render](https://render.com), live at:
 https://fleetfrontend-9fus.onrender.com/login
-
----
-
-## License
-
-No license specified yet — add one (e.g. MIT) if this project will be shared or open-sourced.
